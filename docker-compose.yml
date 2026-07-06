@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  cornvision:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cornvision-app
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/index.html"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Backend API service (uncomment jika ada backend)
+  # api:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   container_name: cornvision-api
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NODE_ENV=production
+  #   restart: unless-stopped

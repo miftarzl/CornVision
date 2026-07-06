@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jenis Penyakit Jagung — CornVision</title>
+    <meta name="description" content="Informasi lengkap tentang penyakit jagung: Blight, Common Rust, Gray Leaf Spot, dan Healthy. Pelajari gejala, penyebab, dan cara penanganannya.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="CornVision" class="logo-img">
+                    <div>
+                        <h1>CornVision</h1>
+                        <span class="logo-subtitle">Corn Disease Detection</span>
+                    </div>
+                </a>
+                <nav class="nav" id="mainNav">
+                    <a class="nav-link" href="index.html">Beranda</a>
+                    <a class="nav-link" href="deteksi.html">Deteksi</a>
+                    <a class="nav-link active" href="penyakit.html">Penyakit</a>
+                </nav>
+                <a href="deteksi.html" class="header-badge">
+                    <span class="status-dot"></span>
+                    <span>Mulai Deteksi</span>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Buka menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-header">
+        <div class="container">
+            <h2 class="page-title"><i class="fa-solid fa-book-open" style="color:var(--primary)"></i> Jenis Penyakit Jagung</h2>
+            <p class="page-subtitle">Pelajari gejala, penyebab, dan rekomendasi penanganan penyakit pada daun jagung</p>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <div class="container">
+
+            <!-- Blight -->
+            <section class="disease-detail-card">
+                <div class="disease-detail-header blight-bg">
+                    <span class="disease-detail-icon"><i class="fa-solid fa-leaf" style="font-size:32px;color:#b45309"></i></span>
+                    <div>
+                        <h3>Hawar Daun (Blight)</h3>
+                        <p class="disease-detail-latin"><em>Exserohilum turcicum</em></p>
+                    </div>
+                </div>
+                <div class="disease-img-wrapper">
+                    <div class="disease-img-frame">
+                        <img src="img_blight.jpg" alt="Foto penyakit Hawar Daun (Blight) pada daun jagung" class="disease-img" onerror="this.closest('.disease-img-frame').classList.add('no-img')">
+                        <div class="disease-img-placeholder"><i class="fa-solid fa-image"></i><span>Foto Hawar Daun (Blight)</span></div>
+                    </div>
+                    <p class="disease-img-caption">Gejala hawar daun (Blight) pada tanaman jagung</p>
+                </div>
+                <div class="disease-detail-body">
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-circle-info" style="margin-right:6px"></i> Deskripsi</h4>
+                        <p>Hawar daun atau Northern Corn Leaf Blight (NCLB) merupakan salah satu penyakit utama pada jagung. Penyakit ini disebabkan oleh jamur <em>Exserohilum turcicum</em> (syn. <em>Helminthosporium turcicum</em>). Gejala awal berupa bercak kecil berbentuk oval yang kemudian memanjang seperti cerutu berwarna coklat keabu-abuan dengan panjang 2,5–15 cm.</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-triangle-exclamation" style="margin-right:6px;color:#d97706"></i> Gejala</h4>
+                        <ul>
+                            <li>Lesi berbentuk cerutu (elips memanjang) berwarna abu-abu kehijauan atau coklat.</li>
+                            <li>Lesi biasanya muncul pertama kali pada daun bagian bawah.</li>
+                            <li>Pada serangan berat, daun mengering dan mati seluruhnya.</li>
+                            <li>Bercak dapat menyatu sehingga menutupi seluruh permukaan daun.</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-lightbulb" style="margin-right:6px;color:#eab308"></i> Rekomendasi Penanganan</h4>
+                        <ul>
+                            <li>Gunakan varietas jagung yang tahan terhadap hawar daun.</li>
+                            <li>Lakukan pergiliran tanaman (rotasi) dengan tanaman non-graminae.</li>
+                            <li>Bersihkan sisa-sisa tanaman yang terinfeksi setelah panen.</li>
+                            <li>Semprotkan fungisida berbahan aktif mankozeb atau benomil sesuai dosis jika serangan meluas.</li>
+                            <li>Pastikan jarak tanam tidak terlalu rapat untuk mengurangi kelembapan.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Common Rust -->
+            <section class="disease-detail-card">
+                <div class="disease-detail-header rust-bg">
+                    <span class="disease-detail-icon"><i class="fa-solid fa-leaf" style="font-size:32px;color:#ea580c"></i></span>
+                    <div>
+                        <h3>Karat Daun (Common Rust)</h3>
+                        <p class="disease-detail-latin"><em>Puccinia sorghi</em></p>
+                    </div>
+                </div>
+                <div class="disease-img-wrapper">
+                    <div class="disease-img-frame">
+                        <img src="img_rust.jpg" alt="Foto penyakit Karat Daun (Common Rust) pada daun jagung" class="disease-img" onerror="this.closest('.disease-img-frame').classList.add('no-img')">
+                        <div class="disease-img-placeholder"><i class="fa-solid fa-image"></i><span>Foto Karat Daun (Common Rust)</span></div>
+                    </div>
+                    <p class="disease-img-caption">Gejala karat daun (Common Rust) pada tanaman jagung</p>
+                </div>
+                <div class="disease-detail-body">
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-circle-info" style="margin-right:6px"></i> Deskripsi</h4>
+                        <p>Common Rust atau karat daun jagung disebabkan oleh jamur <em>Puccinia sorghi</em>. Penyakit ini tersebar luas di daerah tropis dan subtropis dengan kondisi kelembapan tinggi dan suhu sedang (15–25°C). Terlihat sebagai bintik-bintik pustula berwarna oranye-coklat kemerahan pada kedua sisi permukaan daun.</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-triangle-exclamation" style="margin-right:6px;color:#d97706"></i> Gejala</h4>
+                        <ul>
+                            <li>Pustula kecil berwarna oranye-coklat tersebar di kedua sisi daun.</li>
+                            <li>Pustula berbentuk oval atau memanjang, berukuran 1–3 mm.</li>
+                            <li>Pada serangan lanjut, pustula berubah menjadi coklat tua hingga kehitaman.</li>
+                            <li>Daun yang terinfeksi berat menguning dan mengering.</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-lightbulb" style="margin-right:6px;color:#eab308"></i> Rekomendasi Penanganan</h4>
+                        <ul>
+                            <li>Pilih waktu tanam yang tepat untuk menghindari puncak kelembapan tinggi.</li>
+                            <li>Atur jarak tanam agar sirkulasi udara di area pertanaman lancar.</li>
+                            <li>Aplikasi fungisida sistemik berbahan aktif triazol jika intensitas serangan tinggi.</li>
+                            <li>Pastikan sistem drainase lahan berjalan dengan baik.</li>
+                            <li>Gunakan varietas tahan karat jika tersedia di daerah Anda.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gray Leaf Spot -->
+            <section class="disease-detail-card">
+                <div class="disease-detail-header gray-bg">
+                    <span class="disease-detail-icon"><i class="fa-solid fa-leaf" style="font-size:32px;color:#6b7280"></i></span>
+                    <div>
+                        <h3>Bercak Daun Abu-abu (Gray Leaf Spot)</h3>
+                        <p class="disease-detail-latin"><em>Cercospora zeae-maydis</em></p>
+                    </div>
+                </div>
+                <div class="disease-img-wrapper">
+                    <div class="disease-img-frame">
+                        <img src="img_gray.jpg" alt="Foto penyakit Bercak Daun Abu-abu (Gray Leaf Spot) pada daun jagung" class="disease-img" onerror="this.closest('.disease-img-frame').classList.add('no-img')">
+                        <div class="disease-img-placeholder"><i class="fa-solid fa-image"></i><span>Foto Bercak Abu-abu (Gray Leaf Spot)</span></div>
+                    </div>
+                    <p class="disease-img-caption">Gejala bercak daun abu-abu (Gray Leaf Spot) pada tanaman jagung</p>
+                </div>
+                <div class="disease-detail-body">
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-circle-info" style="margin-right:6px"></i> Deskripsi</h4>
+                        <p>Gray Leaf Spot (GLS) disebabkan oleh jamur <em>Cercospora zeae-maydis</em>. Penyakit ini menjadi masalah serius di berbagai wilayah penghasil jagung dunia. Bercak berbentuk persegi panjang yang memanjang mengikuti alur tulang daun merupakan ciri khas penyakit ini.</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-triangle-exclamation" style="margin-right:6px;color:#d97706"></i> Gejala</h4>
+                        <ul>
+                            <li>Bercak berbentuk persegi panjang (rectangular) dengan tepi lurus mengikuti tulang daun.</li>
+                            <li>Warna bercak abu-abu kecoklatan hingga coklat muda.</li>
+                            <li>Biasanya muncul terlebih dahulu pada daun bagian bawah.</li>
+                            <li>Pada serangan berat, bercak menyatu dan daun mengering seluruhnya.</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-lightbulb" style="margin-right:6px;color:#eab308"></i> Rekomendasi Penanganan</h4>
+                        <ul>
+                            <li>Lakukan pengolahan tanah yang sempurna untuk memendam sisa tanaman sakit.</li>
+                            <li>Kurangi kelembapan lingkungan pertanaman.</li>
+                            <li>Gunakan fungisida pelindung sebelum infeksi meluas ke daun di atas tongkol.</li>
+                            <li>Pilih benih yang memiliki ketahanan genetik terhadap GLS.</li>
+                            <li>Hindari pola monokultur jagung secara terus-menerus di lahan yang sama.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Healthy -->
+            <section class="disease-detail-card">
+                <div class="disease-detail-header healthy-bg">
+                    <span class="disease-detail-icon"><i class="fa-solid fa-circle-check" style="font-size:32px;color:var(--primary)"></i></span>
+                    <div>
+                        <h3>Tanaman Sehat (Healthy)</h3>
+                        <p class="disease-detail-latin">Tidak ada patogen terdeteksi</p>
+                    </div>
+                </div>
+                <div class="disease-img-wrapper">
+                    <div class="disease-img-frame">
+                        <img src="img_healthy.jpg" alt="Foto daun jagung sehat (Healthy)" class="disease-img" onerror="this.closest('.disease-img-frame').classList.add('no-img')">
+                        <div class="disease-img-placeholder"><i class="fa-solid fa-image"></i><span>Foto Tanaman Sehat (Healthy)</span></div>
+                    </div>
+                    <p class="disease-img-caption">Contoh daun jagung dalam kondisi sehat (Healthy)</p>
+                </div>
+                <div class="disease-detail-body">
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-circle-info" style="margin-right:6px"></i> Deskripsi</h4>
+                        <p>Daun jagung yang terdeteksi dalam kategori "Healthy" menunjukkan bahwa tidak ada tanda-tanda infeksi penyakit yang teridentifikasi oleh sistem. Daun dalam kondisi prima dengan warna hijau merata dan struktur permukaan daun yang normal.</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-circle-check" style="margin-right:6px;color:var(--primary)"></i> Ciri-ciri Daun Sehat</h4>
+                        <ul>
+                            <li>Warna daun hijau cerah dan merata tanpa bercak atau perubahan warna.</li>
+                            <li>Permukaan daun bersih dari pustula atau lesi.</li>
+                            <li>Tulang daun terlihat jelas dengan pola yang teratur.</li>
+                            <li>Daun tegak dan tidak layu atau menguning.</li>
+                        </ul>
+                    </div>
+                    <div class="detail-section">
+                        <h4><i class="fa-solid fa-lightbulb" style="margin-right:6px;color:#eab308"></i> Tips Menjaga Kesehatan Tanaman</h4>
+                        <ul>
+                            <li>Pertahankan nutrisi tanaman dengan pemupukan berimbang (N-P-K).</li>
+                            <li>Lakukan pemantauan rutin untuk deteksi dini hama dan penyakit.</li>
+                            <li>Pastikan ketersediaan air cukup terutama pada fase generatif.</li>
+                            <li>Lakukan penyiangan gulma secara berkala.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 CornVision — Corn Disease Detection</p>
+        </div>
+    </footer>
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+        <div class="mobile-nav-header">
+            <span class="mobile-nav-title">Menu</span>
+            <button class="mobile-nav-close" id="mobileNavClose" aria-label="Tutup menu">✕</button>
+        </div>
+        <a class="mobile-nav-link" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+        <a class="mobile-nav-link" href="deteksi.html"><i class="fa-solid fa-magnifying-glass"></i> Deteksi</a>
+        <a class="mobile-nav-link active" href="penyakit.html"><i class="fa-solid fa-book-open"></i> Penyakit</a>
+        <a href="deteksi.html" class="mobile-nav-cta"><i class="fa-solid fa-bolt"></i> Mulai Deteksi</a>
+    </nav>
+    <script>
+    (function(){
+        var ham=document.getElementById('hamburger'),
+            nav=document.getElementById('mobileNav'),
+            overlay=document.getElementById('mobileNavOverlay'),
+            cls=document.getElementById('mobileNavClose');
+        function open(){nav.classList.add('open');overlay.classList.add('open');ham.classList.add('open');ham.setAttribute('aria-expanded','true');}
+        function close(){nav.classList.remove('open');overlay.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded','false');}
+        ham.addEventListener('click',open);
+        cls.addEventListener('click',close);
+        overlay.addEventListener('click',close);
+    })();
+    </script>
+</body>
+</html>

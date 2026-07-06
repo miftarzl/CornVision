@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deteksi Penyakit — CornVision</title>
+    <meta name="description"
+        content="Upload foto daun jagung dan deteksi penyakit secara instan menggunakan model YOLOv8.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.x/dist/tf.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2>Mempersiapkan Sistem...</h2>
+            <p id="loadingStatus">Menginisialisasi komponen deteksi</p>
+            <div class="loading-bar">
+                <div class="loading-bar-fill" id="loadingBarFill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="CornVision" class="logo-img">
+                    <div>
+                        <h1>CornVision</h1>
+                        <span class="logo-subtitle">Corn Disease Detection</span>
+                    </div>
+                </a>
+                <nav class="nav" id="mainNav">
+                    <a class="nav-link" href="index.html">Beranda</a>
+                    <a class="nav-link active" href="deteksi.html">Deteksi</a>
+                    <a class="nav-link" href="penyakit.html">Penyakit</a>
+                </nav>
+                <div class="header-badge" id="modelStatus">
+                    <span class="status-dot loading"></span>
+                    <span>Memuat...</span>
+                </div>
+                <button class="hamburger" id="hamburger" aria-label="Buka menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-header">
+        <div class="container">
+            <h2 class="page-title"><i class="fa-solid fa-magnifying-glass" style="width:36px;height:36px;color:var(--primary)"></i> Deteksi Penyakit Jagung</h2>
+            <p class="page-subtitle">Unggah foto daun jagung dan temukan jenis penyakitnya secara langsung</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="detection-grid">
+
+                <!-- Upload Section -->
+                <div class="card upload-card" id="uploadCard">
+                    <div class="card-header" style="margin-bottom: 20px;">
+                        <div class="input-tabs" style="display: flex; gap: 10px; margin-bottom: 12px;">
+                            <button class="btn-secondary active" id="tabUpload" style="flex: 1; padding: 10px;"><i class="fa-solid fa-upload" style="margin-right:6px"></i>Upload</button>
+                            <button class="btn-secondary" id="tabCamera"
+                                style="flex: 1; padding: 10px; opacity: 0.6;"><i class="fa-solid fa-camera" style="margin-right:6px"></i>Kamera</button>
+                        </div>
+                        <p id="inputDesc">Pilih atau seret foto daun jagung</p>
+                    </div>
+                    <div class="upload-zone" id="uploadZone">
+                        <div class="upload-icon">
+                            <i class="fa-solid fa-cloud-arrow-up" style="font-size:48px; color: var(--text-muted);"></i>
+                        </div>
+                        <p class="upload-text">Seret gambar ke sini atau <span class="upload-link">klik untuk
+                                memilih</span></p>
+                        <p class="upload-hint">PNG, JPG, JPEG • Maks 10MB</p>
+                        <input type="file" id="imageInput" accept="image/*" hidden>
+                    </div>
+
+                    <!-- Camera Zone -->
+                    <div class="camera-zone" id="cameraZone" style="display:none; text-align: center;">
+                        <div class="video-container"
+                            style="border-radius: var(--radius); overflow: hidden; margin-bottom: 16px; background: #000; position: relative;">
+                            <video id="cameraVideo" autoplay playsinline
+                                style="width: 100%; max-height: 400px; display: block; object-fit: cover;"></video>
+                        </div>
+                        <canvas id="cameraCanvas" style="display:none;"></canvas>
+                        <button class="btn-primary" id="btnCapture" style="width: 100%;"><i class="fa-solid fa-camera" style="margin-right:6px"></i> Ambil Gambar</button>
+                    </div>
+
+                    <!-- Preview -->
+                    <div class="preview-container" id="previewContainer" style="display:none;">
+                        <img id="previewImage" alt="Preview">
+                        <button class="btn-remove" id="btnRemove" title="Hapus gambar">✕</button>
+                    </div>
+                    <button class="btn-detect" id="btnDetect" disabled>
+                        <span class="btn-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <span>Mulai Deteksi</span>
+                    </button>
+                </div>
+
+                <!-- Result Section -->
+                <div class="card result-card">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-chart-bar" style="color:var(--primary);margin-right:8px"></i> Hasil Deteksi</h3>
+                        <p>Analisis akan muncul di sini</p>
+                    </div>
+
+                    <!-- Canvas for detection result -->
+                    <div class="canvas-wrapper" id="canvasWrapper" style="display:none;">
+                        <canvas id="outputCanvas"></canvas>
+                    </div>
+
+                    <!-- Placeholder -->
+                    <div class="result-placeholder" id="resultPlaceholder">
+                        <div class="placeholder-icon"><i class="fa-solid fa-image" style="font-size:32px"></i></div>
+                        <p>Upload gambar untuk memulai deteksi</p>
+                    </div>
+
+                    <!-- Detection Info -->
+                    <div class="detection-info" id="detectionInfo" style="display:none;">
+                        <div class="info-header">
+                            <h4>Detail Deteksi</h4>
+                            <span class="detection-time" id="detectionTime"></span>
+                        </div>
+                        <div class="detection-list" id="detectionList"></div>
+
+                        <!-- Result Actions -->
+                        <div class="result-actions">
+                            <button class="btn-action primary" id="btnRecommendation">
+                                <span><i class="fa-solid fa-clipboard-list"></i> Rekomendasi</span>
+                            </button>
+                            <button class="btn-action" id="btnDownload">
+                                <span><i class="fa-solid fa-download"></i> Simpan Hasil</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Disease Detail Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="btn-close-modal" id="btnCloseModal">✕</button>
+            <div class="modal-header">
+                <h3 id="modalTitle">Detail Penyakit</h3>
+                <p id="modalSubtitle">Rekomendasi penanganan berdasarkan hasil</p>
+            </div>
+            <div class="recommendation-content" id="modalBody">
+                <!-- Recommendations will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 CornVision — Corn Disease Detection</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+        <div class="mobile-nav-header">
+            <span class="mobile-nav-title">Menu</span>
+            <button class="mobile-nav-close" id="mobileNavClose" aria-label="Tutup menu">✕</button>
+        </div>
+        <a class="mobile-nav-link" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+        <a class="mobile-nav-link active" href="deteksi.html"><i class="fa-solid fa-magnifying-glass"></i> Deteksi</a>
+        <a class="mobile-nav-link" href="penyakit.html"><i class="fa-solid fa-book-open"></i> Penyakit</a>
+        <a href="deteksi.html" class="mobile-nav-cta"><i class="fa-solid fa-bolt"></i> Mulai Deteksi</a>
+    </nav>
+    <script>
+    (function(){
+        var ham=document.getElementById('hamburger'),
+            nav=document.getElementById('mobileNav'),
+            overlay=document.getElementById('mobileNavOverlay'),
+            cls=document.getElementById('mobileNavClose');
+        function open(){nav.classList.add('open');overlay.classList.add('open');ham.classList.add('open');ham.setAttribute('aria-expanded','true');}
+        function close(){nav.classList.remove('open');overlay.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded','false');}
+        ham.addEventListener('click',open);
+        cls.addEventListener('click',close);
+        overlay.addEventListener('click',close);
+    })();
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

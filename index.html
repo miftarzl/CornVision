@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CornVision — Deteksi Penyakit Jagung</title>
+    <meta name="description"
+        content="Aplikasi deteksi penyakit jagung menggunakan AI YOLOv8. Identifikasi Blight, Common Rust, dan Gray Leaf Spot secara instan.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="CornVision" class="logo-img">
+                    <div>
+                        <h1>CornVision</h1>
+                        <span class="logo-subtitle">Corn Disease Detection</span>
+                    </div>
+                </a>
+                <nav class="nav" id="mainNav">
+                    <a class="nav-link active" href="index.html">Beranda</a>
+                    <a class="nav-link" href="deteksi.html">Deteksi</a>
+                    <a class="nav-link" href="penyakit.html">Penyakit</a>
+                </nav>
+                <a href="deteksi.html" class="header-badge" id="headerCTA">
+                    <span class="status-dot"></span>
+                    <span>Mulai Deteksi</span>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Buka menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-blobs" aria-hidden="true">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+        <div class="container">
+            <div class="hero-layout">
+                <div class="hero-content">
+                    <span class="hero-badge"><i class="fa-solid fa-microchip"></i> Powered by YOLOv8</span>
+                    <h2>Deteksi Penyakit Jagung <br><span class="gradient-text">Secara Cepat dan Akurat</span></h2>
+                    <p>Cukup unggah foto daun jagung Anda, dan sistem kami akan langsung membantu mengenali jenis
+                        penyakitnya dalam hitungan detik.</p>
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="deteksi.html"><i class="fa-solid fa-magnifying-glass"></i> Mulai
+                            Deteksi</a>
+                        <a class="btn-secondary" href="penyakit.html"><i class="fa-solid fa-book-open"></i> Lihat Jenis
+                            Penyakit</a>
+                    </div>
+                    <div class="hero-stats" aria-label="Ringkasan kemampuan">
+                        <div class="stat">
+                            <div class="stat-value">4</div>
+                            <div class="stat-label">Kategori</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">640×640</div>
+                            <div class="stat-label">Input Model</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">Instan</div>
+                            <div class="stat-label">Hasil</div>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="hero-panel" aria-label="Preview fitur">
+                    <div class="hero-panel-card">
+                        <div class="hero-panel-top">
+                            <span class="pill"><i class="fa-solid fa-bolt"></i> Cepat</span>
+                            <span class="pill"><i class="fa-solid fa-circle-check"></i> Akurat</span>
+                            <span class="pill"><i class="fa-solid fa-desktop"></i> Lokal</span>
+                        </div>
+                        <div class="hero-panel-body">
+                            <div class="mini-preview">
+                                <div class="mini-image" aria-hidden="true"></div>
+                                <div class="mini-lines" aria-hidden="true">
+                                    <div class="line"></div>
+                                    <div class="line"></div>
+                                    <div class="line short"></div>
+                                </div>
+                            </div>
+                            <div class="hero-panel-note">
+                                <strong>Tip:</strong> Gunakan foto yang fokus, pencahayaan cukup, dan daun terlihat
+                                jelas.
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cara Pakai -->
+    <main class="main-content">
+        <div class="container">
+            <section class="steps-section" id="cara-kerja" aria-label="Cara menggunakan">
+                <div class="steps-header">
+                    <h3 class="section-title"><i class="fa-solid fa-wand-magic-sparkles"
+                            style="color:var(--primary)"></i> Cara Pakai (3 Langkah)</h3>
+                    <p class="section-subtitle">Didesain supaya cepat dan mudah dipakai di laptop maupun HP.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-num">1</div>
+                        <h4>Upload foto</h4>
+                        <p>Pilih foto daun jagung (JPG/PNG). Pastikan daun terlihat jelas dan tidak blur.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">2</div>
+                        <h4>Mulai deteksi</h4>
+                        <p>Klik tombol <strong>Mulai Deteksi</strong>. Model akan memproses gambar secara otomatis.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-num">3</div>
+                        <h4>Baca hasil</h4>
+                        <p>Lihat bounding box &amp; confidence. Kalau ragu, coba sudut foto lain.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Feature Cards -->
+            <section class="features-section">
+                <h3 class="section-title"><i class="fa-solid fa-bolt" style="color:var(--primary)"></i> Fitur Unggulan
+                </h3>
+                <div class="disease-grid">
+                    <a href="deteksi.html" class="disease-card blight" style="text-decoration:none; color:inherit;">
+                        <div class="disease-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                        <h4>Deteksi Real-time</h4>
+                        <p>Upload gambar dan dapatkan hasil deteksi penyakit dalam hitungan detik langsung di browser.
+                        </p>
+                    </a>
+                    <a href="penyakit.html" class="disease-card rust" style="text-decoration:none; color:inherit;">
+                        <div class="disease-icon"><i class="fa-solid fa-book-open"></i></div>
+                        <h4>Info Penyakit</h4>
+                        <p>Pelajari 4 jenis kategori penyakit jagung beserta penyebab dan rekomendasi penanganannya.</p>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 CornVision — Corn Disease Detection</p>
+        </div>
+    </footer>
+    <!-- Mobile Nav Overlay -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile">
+        <div class="mobile-nav-header">
+            <span class="mobile-nav-title">Menu</span>
+            <button class="mobile-nav-close" id="mobileNavClose" aria-label="Tutup menu">✕</button>
+        </div>
+        <a class="mobile-nav-link active" href="index.html"><i class="fa-solid fa-house"></i> Beranda</a>
+        <a class="mobile-nav-link" href="deteksi.html"><i class="fa-solid fa-magnifying-glass"></i> Deteksi</a>
+        <a class="mobile-nav-link" href="penyakit.html"><i class="fa-solid fa-book-open"></i> Penyakit</a>
+        <a href="deteksi.html" class="mobile-nav-cta"><i class="fa-solid fa-bolt"></i> Mulai Deteksi</a>
+    </nav>
+    <script>
+    (function(){
+        var ham=document.getElementById('hamburger'),
+            nav=document.getElementById('mobileNav'),
+            overlay=document.getElementById('mobileNavOverlay'),
+            cls=document.getElementById('mobileNavClose');
+        function open(){nav.classList.add('open');overlay.classList.add('open');ham.classList.add('open');ham.setAttribute('aria-expanded','true');}
+        function close(){nav.classList.remove('open');overlay.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded','false');}
+        ham.addEventListener('click',open);
+        cls.addEventListener('click',close);
+        overlay.addEventListener('click',close);
+    })();
+    </script>
+</body>
+
+</html>
